@@ -21,7 +21,8 @@
     <script src="/js/playlist/playlist.factory.js" defer></script>
     <script src="/js/playlist/playlist.controller.js" defer></script>
     <script src="/js/playlist/playlist.states.js" defer></script>
-
+    <script src="/js/song/song.controller.js" defer></script>
+    <script src="/js/song/song.factory.js" defer></script>
   </head>
   <body ng-app="juke">
 
@@ -63,7 +64,7 @@
           <section ng-controller="SidePlaylistCtrl">
             <h4 class="text-muted">PLAYLISTS</h4>
             <p class="playlist-item" ng-repeat="playlist in playlists ">
-            <!-- how to pass in parameter to ui-sref to parse the parameters and find the correct state -->
+            <!-- how to pass in parameter to ui-sref to parse the parameters and find the correct state; the property name in the object needs to match the url written on state -->
                <a ui-sref="singlePlaylist({ playlistId: playlist.id })">{{ playlist.name }}</a>
             </p>
               <a class="btn btn-primary btn-block" ui-sref="newPlaylist"><span class="glyphicon glyphicon-plus"></span> PLAYLIST</a>

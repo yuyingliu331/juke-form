@@ -20,7 +20,6 @@ juke.controller('SidePlaylistCtrl', function($scope, $log, PlaylistFactory){
 
 
 juke.controller('SinglePlaylistCtrl', function($scope, $log, PlaylistFactory, $stateParams){
-   
     PlaylistFactory.getPlaylist($stateParams.playlistId)
     .then(function(result) {
     	$scope.playlists = result;
