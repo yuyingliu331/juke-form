@@ -19,10 +19,25 @@ juke.controller('SidePlaylistCtrl', function($scope, $log, PlaylistFactory){
 })
 
 
-juke.controller('SinglePlaylistCtrl', function($scope, $log, PlaylistFactory, $stateParams){
+juke.controller('SinglePlaylistCtrl', function($scope, $log, PlaylistFactory, SongFactory, $stateParams){
     PlaylistFactory.getPlaylist($stateParams.playlistId)
     .then(function(result) {
-    	$scope.playlists = result;
+    	$scope.playlist = result;
     })
     .catch($log.error);
+     
+    SongFactory.fetchAll()
+    .then(function(songs) {
+        $scope.songs = songs;
+    }).catch($log.error);
+
+    $scope.addedSong = function(playlistId, song){
+        PlaylistFactory.addSong(playlistId, song) 
+        .then(function(result){
+             console.log("added song data: ", result);
+            return result;
+           
+        }).catch($log.error);
+   }
+
 })

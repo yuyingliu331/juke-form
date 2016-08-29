@@ -25,14 +25,18 @@
   <small ng-hide="playlist.songs.length">No songs.</small>
   <hr>
 
-<h4>Add to Playlist</h4>
-<div ng-controller="SongCtrl">
-    <p>Song</p>
+  <h4>Add to Playlist</h4>
+    <div>
+    <p>Add A Song</p>
     <!-- <select  ng-options="song for song in songs by song.id" ng-model="selected"> --> 
       <!-- <option>{{ song.name }}</option> -->
    <!--  </select> -->
    <!-- START HERE -->
    <!-- ng-options needs some work; the button is gone now; get the list of songs -->
-    <a class="btn btn-primary btn-block" ng-repeat="song in songs">{{ song.name }}</a>
+   <form name="SongForm">
+    <select name="songAdd" ng-options="song.name for song in songs" ng-model="selected" required>{{ song.name }}</select>
+     <button ng-disabled="SongForm.songAdd.$invalid" class="btn btn-success" ng-click="addedSong(playlist.id ,selected)" type="button">Add Song</button>
 </div>
+
+
 </div>
